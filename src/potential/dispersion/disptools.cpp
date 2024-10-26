@@ -1190,6 +1190,56 @@ bool GetC6(std::string mon_id1, std::string mon_id2, size_t index1, size_t index
         // =====>> BEGIN SECTION DISPERSION <<=====
         // ======>> PASTE CODE BELOW <<======
 
+    } else if (mon_id1 == "methanol" and mon_id2 == "methanol") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(2);
+        types1.push_back(2);
+        types1.push_back(2);
+        types1.push_back(3);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(2);
+        types2.push_back(2);
+        types2.push_back(3);
+
+        nt2 = 4;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        C6.push_back(285.3968);  // kcal/mol * A^(-6)  A--A
+        C6.push_back(204.1403);  // kcal/mol * A^(-6)  A--C
+        C6.push_back(98.5817);  // kcal/mol * A^(-6)  A--B
+        C6.push_back(96.9787);  // kcal/mol * A^(-6)  A--D
+        C6.push_back(204.1403);  // kcal/mol * A^(-6)  A--C
+        C6.push_back(164.7177);  // kcal/mol * A^(-6)  C--C
+        C6.push_back(75.8022);  // kcal/mol * A^(-6)  B--C
+        C6.push_back(73.3196);  // kcal/mol * A^(-6)  C--D
+        C6.push_back(98.5817);  // kcal/mol * A^(-6)  A--B
+        C6.push_back(75.8022);  // kcal/mol * A^(-6)  B--C
+        C6.push_back(35.5751);  // kcal/mol * A^(-6)  B--B
+        C6.push_back(34.6503);  // kcal/mol * A^(-6)  B--D
+        C6.push_back(96.9787);  // kcal/mol * A^(-6)  A--D
+        C6.push_back(73.3196);  // kcal/mol * A^(-6)  C--D
+        C6.push_back(34.6503);  // kcal/mol * A^(-6)  B--D
+        C6.push_back(33.8282);  // kcal/mol * A^(-6)  D--D
+        d6.push_back(3.3352);  // A^(-1) A--A
+        d6.push_back(3.4935);  // A^(-1) A--C
+        d6.push_back(4.2375);  // A^(-1) A--B
+        d6.push_back(4.2258);  // A^(-1) A--D
+        d6.push_back(3.4935);  // A^(-1) A--C
+        d6.push_back(3.6676);  // A^(-1) C--C
+        d6.push_back(4.4965);  // A^(-1) B--C
+        d6.push_back(4.4833);  // A^(-1) C--D
+        d6.push_back(4.2375);  // A^(-1) A--B
+        d6.push_back(4.4965);  // A^(-1) B--C
+        d6.push_back(5.8095);  // A^(-1) B--B
+        d6.push_back(5.7874);  // A^(-1) B--D
+        d6.push_back(4.2258);  // A^(-1) A--D
+        d6.push_back(4.4833);  // A^(-1) C--D
+        d6.push_back(5.7874);  // A^(-1) B--D
+        d6.push_back(5.7655);  // A^(-1) D--D
         // =====>> END SECTION DISPERSION <<=====
     } else {
         out_C6 = 0.0;

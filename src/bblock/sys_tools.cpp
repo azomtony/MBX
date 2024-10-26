@@ -231,6 +231,10 @@ size_t SetUpMonomers(std::vector<std::string> mon, std::vector<size_t> &sites, s
                 nat.push_back(3);
                 // =====>> BEGIN SECTION SITES <<=====
                 // ==> PASTE YOUR CODE BELOW <==
+
+        } else if (mon[i] == "methanol") {
+            sites.push_back(6);
+            nat.push_back(6);
                 // END SECTION SITES
             } else {
                 // If monomer not found, throw exception
@@ -794,6 +798,27 @@ void GetExcluded(std::string mon, nlohmann::json mon_j, excluded_set_type &exc12
 
     // =====>> BEGIN SECTION EXCLUDED <<=====
     // =====>> PASTE CODE BELOW <<=====
+
+        if (mon == "methanol") {
+            // 12 distances
+            exc12.insert(std::make_pair(0, 1));
+            exc12.insert(std::make_pair(0, 4));
+            exc12.insert(std::make_pair(1, 5));
+            exc12.insert(std::make_pair(0, 3));
+            exc12.insert(std::make_pair(0, 2));
+            // 13 distances
+            exc13.insert(std::make_pair(2, 4));
+            exc13.insert(std::make_pair(1, 2));
+            exc13.insert(std::make_pair(3, 4));
+            exc13.insert(std::make_pair(1, 4));
+            exc13.insert(std::make_pair(2, 3));
+            exc13.insert(std::make_pair(0, 5));
+            exc13.insert(std::make_pair(1, 3));
+            // 14 distances
+            exc14.insert(std::make_pair(4, 5));
+            exc14.insert(std::make_pair(2, 5));
+            exc14.insert(std::make_pair(3, 5));
+        }
     // =====>> END SECTION EXCLUDED <<=====
 }
 
@@ -1033,6 +1058,16 @@ void SetCharges(std::vector<double> xyz, std::vector<double> &charges, std::stri
         // =====>> BEGIN SECTION CHARGES <<=====
         // =======>> PASTE BELOW <<=======
 
+
+        } else if (mon_id == "methanol") {
+            for (size_t nv = 0; nv < n_mon; nv++) {
+                charges[fst_ind + nv*nsites + 0] = -0.1233 * CHARGECON;
+                charges[fst_ind + nv*nsites + 1] = -0.6008 * CHARGECON;
+                charges[fst_ind + nv*nsites + 2] = 0.0817 * CHARGECON;
+                charges[fst_ind + nv*nsites + 3] = 0.0817 * CHARGECON;
+                charges[fst_ind + nv*nsites + 4] = 0.0817 * CHARGECON;
+                charges[fst_ind + nv*nsites + 5] = 0.4791 * CHARGECON;
+            }
         // END SECTION CHARGES
 
     } else if (mon_id == "mbpbe") {
@@ -1282,6 +1317,16 @@ void SetPolfac(std::vector<double> &polfac, std::string mon_id, size_t n_mon, si
             polfac[fst_ind + nv * nsites + 0] = 0.3198;
             polfac[fst_ind + nv * nsites + 1] = 0.3198;
         }
+
+        } else if (mon_id == "methanol") {
+            for (size_t nv = 0; nv < n_mon; nv++) {
+                polfac[fst_ind + nv*nsites + 0] = 1.1805;
+                polfac[fst_ind + nv*nsites + 1] = 0.686;
+                polfac[fst_ind + nv*nsites + 2] = 0.3244;
+                polfac[fst_ind + nv*nsites + 3] = 0.3244;
+                polfac[fst_ind + nv*nsites + 4] = 0.3244;
+                polfac[fst_ind + nv*nsites + 5] = 0.3344;
+            }
         // =====>> END SECTION POLFACS <<=====
     } else if (mon_id == "mbpbe") {
         // Creating vector with contiguous data
@@ -1455,6 +1500,16 @@ void SetPol(std::vector<double> &pol, std::string mon_id, size_t n_mon, size_t n
         // =====>> BEGIN SECTION POLS <<=====
         // =====>> PASTE  BELOW <<=====
 
+
+        } else if (mon_id == "methanol") {
+            for (size_t nv = 0; nv < n_mon; nv++) {
+                pol[fst_ind + nv*nsites + 0] = 1.1805;
+                pol[fst_ind + nv*nsites + 1] = 0.686;
+                pol[fst_ind + nv*nsites + 2] = 0.3244;
+                pol[fst_ind + nv*nsites + 3] = 0.3244;
+                pol[fst_ind + nv*nsites + 4] = 0.3244;
+                pol[fst_ind + nv*nsites + 5] = 0.3344;
+            }
         // =====>> END SECTION POLS <<=====
 
     } else if (mon_id == "mbpbe") {
@@ -1654,6 +1709,15 @@ void SetC6LongRange(std::vector<double> &c6_lr, std::string mon_id, size_t n_mon
             c6_lr[nv * natoms + fst_ind + 4] = 13.402239942963767;  // O
             c6_lr[nv * natoms + fst_ind + 5] = 13.402239942963767;  // O
             c6_lr[nv * natoms + fst_ind + 6] = 13.402239942963767;  // O
+        }
+    } else if (mon_id == "methanol") {
+        for (size_t nv = 0; nv < n_mon; nv++) { 
+            c6_lr[nv * natoms + fst_ind] = 16.893691130123102; // A
+            c6_lr[nv * natoms + fst_ind] = 12.834239361956751; // C
+            c6_lr[nv * natoms + fst_ind] = 5.964486566335782; // B
+            c6_lr[nv * natoms + fst_ind] = 5.964486566335782; // B
+            c6_lr[nv * natoms + fst_ind] = 5.964486566335782; // B
+            c6_lr[nv * natoms + fst_ind] = 5.816201509576504; // D
         }
         // END SECTION C6_LONG_RANGE
     } else if (mon_id == "mbpbe") {
