@@ -83,6 +83,9 @@ double get_1b_energy(std::string mon1, size_t nm, std::vector<double> xyz1, std:
         // =====>> BEGIN SECTION 1B_NO_GRADIENT <<=====
         // =====>> PASTE YOUR CODE BELOW <<=====
 
+    } else if (mon1 == "methanol") {
+        mbnrg_A1B1C3D1_deg3::mbnrg_A1B1C3D1_deg3_v1 pot(mon1);
+        energies = pot.eval(xyz1.data(), nm);
         // =====>> END SECTION 1B_NO_GRADIENT <<=====
     } else {
         return 0.0;
@@ -172,6 +175,9 @@ double get_1b_energy(std::string mon1, size_t nm, std::vector<double> xyz1, std:
     } else if (mon1 == "mbpbe") {
         mbnrg_A1B2_deg6::mbnrg_A1B2_deg6_vmbpbe pot(mon1);
         energies = pot.eval(xyz1.data(), grad1.data(), nm, virial);
+    } else if (mon1 == "methanol") {
+        mbnrg_A1B1C3D1_deg3::mbnrg_A1B1C3D1_deg3_v1 pot(mon1);
+        energies =  pot.eval(xyz1.data(), grad1.data(), nm, virial);
         // =====>> END SECTION 1B_GRADIENT <<=====
     } else {
         return 0.0;
