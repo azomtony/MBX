@@ -2485,6 +2485,8 @@ int FixMBX::get_num_atoms_per_monomer(char *name, bool &inc_e) {
         na = 4;
     else if (strcmp("dp2", name) == 0)
         na = 2;
+    else if (strcmp("methanol", name) == 0)
+        na = 6;
     else
         error->one(FLERR, "Unsupported molecule type in MBX");
 
