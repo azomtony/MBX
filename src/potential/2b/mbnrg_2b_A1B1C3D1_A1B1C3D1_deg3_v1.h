@@ -127,10 +127,10 @@ urns a vector with them.
     double m_k_x_inter_D_D_0;
 
     // Inner cutoff
-    double m_ri = 4.0;
+    double m_ri = 6.0;
     
     // Outer cutoff
-    double m_ro = 6.0;
+    double m_ro = 8.0;
 
     // Switch function
     double f_switch(const double, double&);
