@@ -838,6 +838,56 @@ bool GetBuckParams(std::string mon_id1, std::string mon_id2, size_t index1, size
         // =====>> BEGIN SECTION BUCKINGHAM <<=====
         // ======>> PASTE CODE BELOW <<======
 
+    } else if (mon_id1 == "methanol" and mon_id2 == "methanol") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(2);
+        types1.push_back(2);
+        types1.push_back(2);
+        types1.push_back(3);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(2);
+        types2.push_back(2);
+        types2.push_back(3);
+
+        nt2 = 4;
+
+        // Fill in (in order) the a and d6 coefficients
+        a.push_back(0.0);  // kcal/mol A--A
+        a.push_back(0.0);  // kcal/mol A--B
+        a.push_back(0.0);  // kcal/mol A--C
+        a.push_back(0.0);  // kcal/mol A--D
+        a.push_back(0.0);  // kcal/mol A--B
+        a.push_back(0.0);  // kcal/mol B--B
+        a.push_back(0.0);  // kcal/mol B--C
+        a.push_back(0.0);  // kcal/mol B--D
+        a.push_back(0.0);  // kcal/mol A--C
+        a.push_back(0.0);  // kcal/mol B--C
+        a.push_back(0.0);  // kcal/mol C--C
+        a.push_back(0.0);  // kcal/mol C--D
+        a.push_back(0.0);  // kcal/mol A--D
+        a.push_back(0.0);  // kcal/mol B--D
+        a.push_back(0.0);  // kcal/mol C--D
+        a.push_back(0.0);  // kcal/mol D--D
+        b.push_back(3.3352);  // A^(-1) A--A
+        b.push_back(3.4935);  // A^(-1) A--B
+        b.push_back(4.2375);  // A^(-1) A--C
+        b.push_back(4.2258);  // A^(-1) A--D
+        b.push_back(3.4935);  // A^(-1) A--B
+        b.push_back(3.6676);  // A^(-1) B--B
+        b.push_back(4.4965);  // A^(-1) B--C
+        b.push_back(4.4833);  // A^(-1) B--D
+        b.push_back(4.2375);  // A^(-1) A--C
+        b.push_back(4.4965);  // A^(-1) B--C
+        b.push_back(5.8095);  // A^(-1) C--C
+        b.push_back(5.7874);  // A^(-1) C--D
+        b.push_back(4.2258);  // A^(-1) A--D
+        b.push_back(4.4833);  // A^(-1) B--D
+        b.push_back(5.7874);  // A^(-1) C--D
+        b.push_back(5.7655);  // A^(-1) D--D
         // =====>> END SECTION BUCKINGHAM <<=====
     } else {
         out_a = 0.0;
